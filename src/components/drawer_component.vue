@@ -2,16 +2,16 @@
   <aside v-if="isDrawerOpen" class="drawer">
     <ul>
       <li @click="toggleDrawer()">
-        <a  href="#">HOME</a>
+        <a  href="#home">HOME</a>
       </li>
       <li @click="toggleDrawer()">
-        <a href="#">COMO PARTICIPAR</a>
+        <a href="#como-participar">COMO PARTICIPAR</a>
       </li>
       <li @click="toggleDrawer()">
-        <a href="#">PRÊMIOS</a>
+        <a href="#premios">PRÊMIOS</a>
       </li>
       <li @click="toggleDrawer()">
-        <a href="#">PRODUTOS PARTICIPANTES</a>
+        <a href="#produtos-participantes">PRODUTOS PARTICIPANTES</a>
       </li>
       <li @click="toggleDrawer()">
         <a href="#">RECEITAS</a>

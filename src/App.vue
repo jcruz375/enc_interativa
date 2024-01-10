@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderComponent />
-    <section class="home-section">
+    <section id="home" class="home-section">
       <article>
         <div class="unilever-logo" v-if="isMobile">
           <img src="./assets/home/logo-unilever.png" alt="logo unilever" />
@@ -43,7 +43,7 @@
         alt="logo da promoção hellmann's"
       />
     </BlueContainer>
-    <section class="how-to-participate">
+    <section id="como-participar" class="how-to-participate">
       <h3>como participar</h3>
       <div class="steps">
         <img
@@ -83,7 +83,7 @@
       </div>
       <PaticipateButton />
     </section>
-    <GalleryComponent />
+    <GalleryComponent id="premios" />
     <section class="movie-section">
       <span>
         dos dribles e enterradas memoráveis ao zerar do cronômetro,
@@ -101,7 +101,7 @@
         frameborder="none"
       ></iframe>
     </section>
-    <BlueContainer class="products-section">
+    <BlueContainer id="produtos-participantes" class="products-section">
       <h2>produtos participantes</h2>
       <h3>todos os squeezes da linha Helmann's</h3>
       <img src="./assets/home/produtos-home.png" alt="Produtos da promoção" />

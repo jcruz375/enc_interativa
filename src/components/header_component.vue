@@ -2,16 +2,16 @@
   <header>
     <ul class="desktop-links">
       <li>
-        <a href="#">HOME</a>
+        <a href="#home">HOME</a>
       </li>
       <li>
-        <a href="#">COMO PARTICIPAR</a>
+        <a href="#como-participar">COMO PARTICIPAR</a>
       </li>
       <li>
-        <a href="#">PRÊMIOS</a>
+        <a href="#premios">PRÊMIOS</a>
       </li>
       <li>
-        <a href="#">PRODUTOS PARTICIPANTES</a>
+        <a href="#produtos-participantes">PRODUTOS PARTICIPANTES</a>
       </li>
       <li>
         <a href="#">RECEITAS</a>
