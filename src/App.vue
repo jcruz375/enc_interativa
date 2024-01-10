@@ -3,12 +3,22 @@
     <HeaderComponent />
     <section class="home-section">
       <article>
+        <div class="unilever-logo" v-if="isMobile">
+          <img src="./assets/home/logo-unilever.png" alt="logo unilever" />
+        </div>
+        <PaticipateButton v-if="isMobile" class="participate-button-mobile" />
         <img
+          v-if="isMobile"
+          src="./assets/home/logo-promo-mob.png"
+          alt="logo da promoção hellmann's"
+        />
+        <img
+          v-else
           src="./assets/home/logo-promo.png"
           alt="logo da promoção hellmann's"
         />
       </article>
-      <article>
+      <article v-if="!isMobile">
         <div class="unilever-logo">
           <img src="./assets/home/logo-unilever.png" alt="logo unilever" />
         </div>
@@ -21,8 +31,14 @@
         </div>
       </article>
     </section>
-    <BlueContainer class="awards-example-section">
+    <BlueContainer class="awards-section">
       <img
+        v-if="isMobile"
+        src="./assets/awards/premios-mob.png"
+        alt="logo da promoção hellmann's"
+      />
+      <img
+        v-else
         src="./assets/awards/premios.png"
         alt="logo da promoção hellmann's"
       />
@@ -67,13 +83,14 @@
       </div>
       <PaticipateButton />
     </section>
-    <AwardsComponent />
+    <GalleryComponent />
     <section class="movie-section">
       <span>
         dos dribles e enterradas memoráveis ao zerar do cronômetro,
         <br />
         <strong>
-          cada hora h da nba fica ainda mais saborosa com hellman's</strong
+          cada hora h da nba fica ainda mais saborosa com hellman's
+        </strong
         >
       </span>
       <h3>assista ao filme abaixo:</h3>
@@ -112,18 +129,23 @@
 <script>
 import HeaderComponent from "./components/header_component.vue";
 import BlueContainer from "./components/blue_container.vue";
-import AwardsComponent from "./components/awards_component.vue";
+import GalleryComponent from "./components/gallery_component.vue";
 import PaticipateButton from "./components/participate_button_component.vue";
-import FooterComponent from './components/footer_component.vue';
+import FooterComponent from "./components/footer_component.vue";
 
 export default {
   name: "App",
   components: {
     HeaderComponent,
     BlueContainer,
-    AwardsComponent,
+    GalleryComponent,
     PaticipateButton,
     FooterComponent,
+  },
+  data() {
+    return {
+      isMobile: window.innerWidth <= 768,
+    };
   },
 };
 </script>
@@ -200,7 +222,7 @@ ul {
   }
 }
 
-.awards-example-section {
+.awards-section {
   position: relative;
   bottom: 32px;
 }
@@ -335,6 +357,103 @@ ul {
       justify-content: center;
       flex-direction: column;
       align-items: center;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home-section {
+    justify-content: center;
+
+    .participate-button-mobile {
+      margin-bottom: 24px;
+    }
+
+    article {
+      img {
+        width: 100%;
+      }
+
+      .unilever-logo {
+        margin-bottom: 24px;
+        img {
+          width: 20%;
+        }
+      }
+      &:last-child {
+        position: static;
+      }
+    }
+  }
+
+  .awards-section {
+    img {
+      width: 100%;
+    }
+  }
+
+  .how-to-participate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h3 {
+      font-size: 24px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .steps {
+      flex-direction: column;
+      margin: 0;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .extras {
+      margin: 0 64px;
+    }
+  }
+
+  .movie-section {
+    span {
+      font-size: 24px;
+    }
+
+    h3 {
+      font-size: 32px;
+      margin-top: 12px;
+    }
+
+    .video-player {
+      width: 90%;
+    }
+  }
+
+  .products-section {
+    img {
+      width: 100%;
+    }
+    h2 {
+      font-size: 32px;
+    }
+    h3 {
+      font-size: 24px;
+    }
+  }
+
+  .buy-now {
+    padding-bottom: 40px;
+    margin-bottom: 0;
+    h2 {
+      margin-top: 24px;
+      font-size: 24px;
+    }
+    .stores-container {
+      flex-direction: column;
+      gap: 32px;
     }
   }
 }

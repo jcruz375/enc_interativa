@@ -1,42 +1,74 @@
 <template>
-  <BlueContainer class="awards-section">
+  <BlueContainer class="gallery-section">
     <h3>compre, junte e troque</h3>
     <div class="selector-container">
       <ul>
-        <li :class="{ selected: isSelected('plates')}" @click="setSelectedCategory('plates')">pratos</li>
-        <li :class="{ selected: isSelected('bowls')}" @click="setSelectedCategory('bowls')">bowls</li>
-        <li :class="{ selected: isSelected('board')}" @click="setSelectedCategory('board')">tábua</li>
+        <li
+          :class="{ selected: isSelected('plates') }"
+          @click="setSelectedCategory('plates')"
+        >
+          pratos
+        </li>
+        <li
+          :class="{ selected: isSelected('bowls') }"
+          @click="setSelectedCategory('bowls')"
+        >
+          bowls
+        </li>
+        <li
+          :class="{ selected: isSelected('board') }"
+          @click="setSelectedCategory('board')"
+        >
+          tábua
+        </li>
       </ul>
     </div>
-    <div class="galery-container">
+    <div v-if="isMobile" class="gallery-container">
       <img
-        :class="{ selected: isSelected('plates')}"
+        :class="{ selected: isSelected('plates') }"
+        src="../assets/awards/galeria-pratos-mob.png"
+        alt="imagem dos pratos da campanha"
+      />
+      <img
+        :class="{ selected: isSelected('bowls') }"
+        src="../assets/awards/galeria-bowls-mob.png"
+        alt="imagem dos bowls da campanha"
+      />
+      <img
+        :class="{ selected: isSelected('board') }"
+        src="../assets/awards/galeria-tabua-mob.png"
+        alt="imagem da tábua da campanha"
+      />
+    </div>
+    <div v-else class="gallery-container">
+      <img
+        :class="{ selected: isSelected('plates') }"
         src="../assets/awards/galeria-pratos.png"
         alt="imagem dos pratos da campanha"
-      >
+      />
       <img
-        :class="{ selected: isSelected('bowls')}"
+        :class="{ selected: isSelected('bowls') }"
         src="../assets/awards/galeria-bowls.png"
         alt="imagem dos bowls da campanha"
-      >
+      />
       <img
-        :class="{ selected: isSelected('board')}"
+        :class="{ selected: isSelected('board') }"
         src="../assets/awards/galeria-tabua.png"
         alt="imagem da tábua da campanha"
-      >
+      />
     </div>
   </BlueContainer>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref } from "vue";
 import BlueContainer from "./blue_container.vue";
 export default {
   components: {
     BlueContainer,
   },
   setup() {
-    const selectedCategory = ref('plates');
+    const selectedCategory = ref("plates");
 
     function setSelectedCategory(category) {
       selectedCategory.value = category;
@@ -48,18 +80,23 @@ export default {
         return true;
       }
       return false;
-    }
+    };
 
     return {
       setSelectedCategory,
-      isSelected
-    }
-  }
+      isSelected,
+    };
+  },
+  data() {
+    return {
+      isMobile: window.innerWidth <= 768,
+    };
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.awards-section {
+.gallery-section {
   h3 {
     font-size: var(--title-regular);
     color: #facc1f;
@@ -98,7 +135,7 @@ export default {
     }
   }
 
-  .galery-container {
+  .gallery-container {
     display: flex;
     justify-content: center;
 
@@ -107,6 +144,25 @@ export default {
 
       &.selected {
         display: block;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    h3 {
+      font-size: 24px;
+    }
+
+    .selector-container {
+      ul {
+        width: 100%;
+        gap: 12px;
+      }
+    }
+
+    .gallery-container {
+      img {
+        width: 100%;
       }
     }
   }

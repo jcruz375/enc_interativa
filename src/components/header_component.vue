@@ -1,6 +1,6 @@
 <template>
   <header>
-    <ul>
+    <ul class="desktop-links">
       <li>
         <a href="#">HOME</a>
       </li>
@@ -26,14 +26,36 @@
         <ProfileDropdown />
       </li>
     </ul>
+    <button @click="handleToggleDrawerOpen(!isDrawerOpen)">
+      <img src="../assets/icons/menu-mobile.png" alt="icone menu hambúrguer">
+    </button>
+    <DrawerComponent :isDrawerOpen="isDrawerOpen" :handleToggleDrawerOpen="handleToggleDrawerOpen"/>
   </header>
 </template>
 
 <script>
 import ProfileDropdown from './profile_dropdown.vue'
+import DrawerComponent from './drawer_component.vue';
+
+import { ref } from 'vue';
+
 export default {
   components: {
     ProfileDropdown,
+    DrawerComponent
+  },
+  setup() {
+    const isDrawerOpen = ref(false);
+
+    function handleToggleDrawerOpen(drawerVisibility) {
+      isDrawerOpen.value = drawerVisibility
+      console.log(isDrawerOpen.value);
+    }
+
+    return {
+      isDrawerOpen,
+      handleToggleDrawerOpen,
+    }
   }
 }
 </script>
@@ -43,8 +65,12 @@ export default {
     width: 100%;
     height: 56px;
     background-color: #facc1f;
+
+    button {
+      display: none;
+    }
     
-    ul {
+    .desktop-links {
       width: inherit;
       height: inherit;
       
@@ -82,6 +108,22 @@ export default {
           font-size: 20px;
           text-decoration: none;
         }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    header {
+      display: flex;
+      justify-content: flex-start;
+      padding: 0 24px;
+      .desktop-links {
+        display: none;
+      }
+      button {
+        display: block;
+        background: transparent;
+        border: none;
       }
     }
   }

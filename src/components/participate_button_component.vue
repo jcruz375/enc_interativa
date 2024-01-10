@@ -21,4 +21,10 @@ button {
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
   cursor: pointer;
 }
+
+@media(max-width: 767px) {
+  button {
+    font-size: var(--text-regular);
+  }
+}
 </style>
